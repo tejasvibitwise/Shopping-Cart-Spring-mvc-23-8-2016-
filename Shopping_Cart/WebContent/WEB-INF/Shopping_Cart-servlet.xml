@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="
+   http://www.springframework.org/schema/beans     
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context 
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+   
+
+   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name="prefix" value="/WEB-INF/jsp/" />
+      <property name="suffix" value=".jsp" />
+   </bean>
+   
+   
+   <bean name="loginbean" class="com.bitwise.login.LoginBean"></bean>
+   <bean name="loginvalidator" class="com.bitwise.login.LoginValidator"></bean>
+   <bean name="countproduct" class="com.bitwise.cart.CountProduct"></bean>
+   <bean name="cartItems" class="com.bitwise.cart.CartItems"></bean>
+<!--   <bean name="productdetails" class="com.bitwise.cart.ProductDetails"></bean>  -->
+   
+
+   
+         <bean id="productList" class="com.bitwise.cart.ProductList">
+            <property name="products">
+                  <list>
+                        <ref bean="product1" />
+                        <ref bean="product2" />
+                        <ref bean="product3" />
+                        <ref bean="product4" />
+                  </list>
+            </property>
+      </bean>
+
+      <bean id="product1" class="com.bitwise.cart.ProductDetails">
+            <property name="product_Name" value="product 1" />
+            <property name="price" value="200000" />
+            <property name="stock" value="10" />
+            
+            
+      </bean>
+      
+      <bean id="product2" class="com.bitwise.cart.ProductDetails">
+            <property name="product_Name" value="product 2" />
+            <property name="price" value="1000" />
+            <property name="stock" value="5" />
+            
+      </bean>
+      
+      <bean id="product3" class="com.bitwise.cart.ProductDetails">
+            <property name="product_Name" value="product 3" />
+            <property name="price" value="200" />
+            <property name="stock" value="3" />
+            
+      </bean>
+      
+      <bean id="product4" class="com.bitwise.cart.ProductDetails">
+            <property name="product_Name" value="product 4" />
+            <property name="price" value="20" />
+            <property name="stock" value="7" />
+            
+      </bean>
+
+<context:component-scan base-package="com.bitwise.login" />
+
+<context:component-scan base-package="com.bitwise.cart" />
+
+</beans>
